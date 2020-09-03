@@ -1,0 +1,22 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Create Listings Here!</h2>
+
+    <form action="{% url 'sell' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="title" placeholder="Title">
+        </div>
+        </div>
+        
+        <select name="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}">{{ category }}</option>
+            {% endfor %}
+        </select>
+
+        <input class="btn btn-primary" type="submit" value="Register">
+    </form>
+    
+{% endblock %}
